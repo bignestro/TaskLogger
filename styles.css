@@ -1,0 +1,276 @@
+/* Main Layout */
+body {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #4a9eff;
+    font-size: 2.5em;
+}
+
+/* Input Sections */
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-row select,
+#taskTable select,
+#subtaskTable select {
+    flex: 1;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #444;
+    padding: 2px 4px;
+}
+
+.input-row input {
+    flex: 1;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #444;
+    padding: 2px 4px;
+}
+
+.input-row input:focus,
+.input-row select:focus,
+#taskTable select:focus,
+#subtaskTable select:focus {
+    border-color: #4a9eff;
+}
+
+.input-row select option,
+#taskTable select option,
+#subtaskTable select option {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.input-row button {
+    background-color: #4a9eff;
+    color: white !important;
+}
+
+.input-row button:hover {
+    background-color: #3a8eef;
+}
+
+/* Sorting Section */
+.sorting-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-buttons,
+.sort-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sorting-row button {
+    background-color: #000000;
+    color: white !important;
+}
+
+.sorting-row button:hover {
+    background-color: #1a1a1a;
+}
+
+.sorting-row button.active {
+    background-color: #4a9eff;
+}
+
+/* Task Table */
+.task-table-container {
+    overflow-x: auto;
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#taskTable th {
+    background-color: #000000;
+    color: #4a9eff !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+#taskTable th:hover {
+    background-color: #1a1a1a;
+}
+
+#taskTable td {
+    background-color: #000000;
+}
+
+#taskTable tr:hover td {
+    background-color: #1a1a1a;
+}
+
+/* Task Row Inputs */
+.task-input {
+    background-color: #000000 !important;
+    border: 1px solid #444;
+    color: #ffffff !important;
+    width: 100%;
+    padding: 2px 4px;
+}
+
+.task-input:focus {
+    background-color: #000000 !important;
+    border-color: #4a9eff;
+}
+
+/* Priority Colors - Keep color but ensure high contrast */
+.priority-high {
+    color: #ff6b6b !important;
+}
+
+.priority-medium {
+    color: #ffd93d !important;
+}
+
+.priority-low {
+    color: #4aff4a !important;
+}
+
+/* Status Colors - Keep color but ensure high contrast */
+.status-not-started {
+    color: #ff6b6b !important;
+}
+
+.status-in-progress {
+    color: #ffd93d !important;
+}
+
+.status-completed {
+    color: #4aff4a !important;
+}
+
+.status-wait {
+    color: #b0b0b0 !important;
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 4px 8px;
+    margin: 0 2px;
+    background-color: transparent;
+    color: #4a9eff !important;
+    font-size: 14px;
+}
+
+.action-btn:hover {
+    background-color: #1a1a1a;
+}
+
+.delete-btn {
+    color: #ff6b6b !important;
+}
+
+/* Subtask Modal Specific */
+.subtask-controls {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#subtaskTable {
+    margin-top: 15px;
+}
+
+/* Modal specific styles */
+.modal-content {
+    background-color: #1e1e1e !important;
+    color: white !important;
+}
+
+.modal-content input {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #444;
+    padding: 2px 4px;
+}
+
+.modal-content select {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #444;
+    padding: 2px 4px;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    border-color: #4a9eff;
+}
+
+.modal-content th {
+    color: #4a9eff !important;
+}
+
+.close {
+    color: white !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+    }
+    
+    .sorting-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-buttons,
+    .sort-buttons {
+        justify-content: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+}
+
+/* Arrow Buttons */
+.arrow-btn {
+    padding: 0px 4px;
+    background-color: transparent;
+    color: #4a9eff !important;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.arrow-btn:hover {
+    background-color: #1a1a1a;
+}
+
+/* Drag and Drop Styles */
+tr.dragging {
+    background-color: #1a1a1a;
+    cursor: move;
+}
+
+#subtaskTable tbody tr {
+    transition: border-color 0.2s ease;
+}
+
+#subtaskTable tbody tr td:first-child {
+    cursor: move;
+} 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Logger</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Task Logger</h1>
+    </header>
+
+    <main>
+        <!-- Dropdown Row -->
+        <section class="input-row dropdown-row">
+            <select id="typeDropdown">
+                <option value="">Type</option>
+                <option value="SW">SW</option>
+                <option value="HK">HK</option>
+            </select>
+            <select id="statusDropdown">
+                <option value="">Status</option>
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Wait">Wait</option>
+            </select>
+            <select id="priorityDropdown">
+                <option value="">Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <input type="time" id="alarmTime" placeholder="Alarm (Optional)">
+        </section>
+
+        <!-- Text Input Row -->
+        <section class="input-row text-input-row">
+            <input type="text" id="taskInput" placeholder="Task *" required>
+            <input type="text" id="infoInput" placeholder="Info">
+            <input type="text" id="toolInput" placeholder="Tool">
+            <input type="text" id="chInput" placeholder="CH">
+            <button id="addTaskBtn">Add Task</button>
+        </section>
+
+        <!-- Sorting Row -->
+        <section class="sorting-row">
+            <div class="filter-buttons">
+                <button class="active" onclick="showAllTasks()">All</button>
+                <button onclick="filterTasksByStatus('Not Started')">Not Started</button>
+                <button onclick="filterTasksByStatus('In Progress')">In Progress</button>
+                <button onclick="filterTasksByStatus('Completed')">Completed</button>
+                <button onclick="filterTasksByStatus('Wait')">Wait</button>
+                <button onclick="filterTasksByType('SW')">SW</button>
+                <button onclick="filterTasksByType('HK')">HK</button>
+            </div>
+            <div class="sort-buttons">
+                <button onclick="sortTasksByPriority()">Sort by Priority</button>
+                <button onclick="sortTasksByCreated()">Sort by Created</button>
+                <button onclick="exportTasksToCSV()">Export CSV</button>
+                <button onclick="document.getElementById('csvFileInput').click()">Import CSV</button>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;" onchange="importTasksFromCSV(this)">
+                <button onclick="window.open(window.location.href, '_blank', 'menubar=no,toolbar=no,location=no,status=no')">Open in New Window</button>
+            </div>
+        </section>
+
+        <!-- Task Table -->
+        <section class="task-table-container">
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortByColumn(0)">Task</th>
+                        <th onclick="sortByColumn(1)">Info</th>
+                        <th onclick="sortByColumn(2)">Tool</th>
+                        <th onclick="sortByColumn(3)">CH</th>
+                        <th onclick="sortByColumn(4)">Type</th>
+                        <th onclick="sortByColumn(5)">Status</th>
+                        <th onclick="sortByColumn(6)">Priority</th>
+                        <th onclick="sortByColumn(7)">Created</th>
+                        <th onclick="sortByColumn(8)">Alarm</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Subtask Modal -->
+    <div id="subtaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subtasks</h2>
+            <div class="subtask-controls">
+                <button id="addSubtaskBtn">+Subtask</button>
+            </div>
+            <table id="subtaskTable">
+                <thead>
+                    <tr>
+                        <th style="width: 40px"></th>
+                        <th>Subtask</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
