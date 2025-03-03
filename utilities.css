@@ -47,7 +47,7 @@ input, select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: #4a9eff;
+    border-color: #6e6e6e;
 }
 
 /* Alert Utilities */

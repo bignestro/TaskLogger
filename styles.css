@@ -12,7 +12,7 @@ header {
 }
 
 header h1 {
-    color: #4a9eff;
+    color: #ffffff;
     font-size: 2.5em;
 }
 
@@ -45,7 +45,7 @@ header h1 {
 .input-row select:focus,
 #taskTable select:focus,
 #subtaskTable select:focus {
-    border-color: #4a9eff;
+    border-color: #ffffff;
 }
 
 .input-row select option,
@@ -56,12 +56,12 @@ header h1 {
 }
 
 .input-row button {
-    background-color: #4a9eff;
+    background-color: #111111;
     color: white !important;
 }
 
 .input-row button:hover {
-    background-color: #3a8eef;
+    background-color: #6e6e6e;
 }
 
 /* Sorting Section */
@@ -90,94 +90,114 @@ header h1 {
 }
 
 .sorting-row button.active {
-    background-color: #4a9eff;
+    background-color: #6e6e6e;
 }
 
 /* Task Table */
 .task-table-container {
-    overflow-x: auto;
+    overflow-x: hidden;
     background-color: #000000;
     border-radius: 8px;
-    padding: 10px;
+    padding: 1px;
 }
 
-#taskTable th {
-    background-color: #000000;
-    color: #4a9eff !important;
-    cursor: pointer;
-    user-select: none;
+#taskTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
 }
 
-#taskTable th:hover {
-    background-color: #1a1a1a;
+#taskTable th,
+#taskTable td {
+    padding: 8px;
+    border: none;
+    vertical-align: middle;
+}
+
+#taskTable tbody tr {
+    border: none;
 }
 
 #taskTable td {
-    background-color: #000000;
+    height: 40px;
+    line-height: 1.2;
 }
 
-#taskTable tr:hover td {
+#taskTable tr:hover {
     background-color: #1a1a1a;
 }
 
-/* Task Row Inputs */
-.task-input {
-    background-color: #000000 !important;
-    border: 1px solid #444;
-    color: #ffffff !important;
-    width: 100%;
-    padding: 2px 4px;
+/* Column widths */
+#taskTable th:nth-child(1), #taskTable td:nth-child(1) { width: 8%; }  /* Task */
+#taskTable th:nth-child(2), #taskTable td:nth-child(2) { width: 8%; }  /* Info */
+#taskTable th:nth-child(3), #taskTable td:nth-child(3) { width: 8%; }  /* Tool */
+#taskTable th:nth-child(4), #taskTable td:nth-child(4) { width: 6%; }  /* CH */
+#taskTable th:nth-child(5), #taskTable td:nth-child(5) { width: 10%; } /* Type */
+#taskTable th:nth-child(6), #taskTable td:nth-child(6) { width: 12%; } /* Status */
+#taskTable th:nth-child(7), #taskTable td:nth-child(7) { width: 12%; } /* Priority */
+#taskTable th:nth-child(8), #taskTable td:nth-child(8) { width: 12%; } /* Created */
+#taskTable th:nth-child(9), #taskTable td:nth-child(9) { width: 12%; } /* Alarm */
+#taskTable th:nth-child(10), #taskTable td:nth-child(10) { width: 180px; } /* Actions */
+
+/* Task Table Actions Column */
+#taskTable td:last-child {
+    text-align: left;
+    white-space: nowrap;
+    display: grid;
+    grid-template-columns: 180px 32px 32px;
+    gap: 4px;
+    align-items: center;
 }
 
-.task-input:focus {
-    background-color: #000000 !important;
-    border-color: #4a9eff;
+#taskTable td:last-child .action-btn:first-child {
+    text-align: center;
+    font-family: monospace;
+    width: 90px;
+    overflow: hidden;
 }
 
-/* Priority Colors - Keep color but ensure high contrast */
-.priority-high {
-    color: #ff6b6b !important;
-}
-
-.priority-medium {
-    color: #ffd93d !important;
-}
-
-.priority-low {
-    color: #4aff4a !important;
-}
-
-/* Status Colors - Keep color but ensure high contrast */
-.status-not-started {
-    color: #ff6b6b !important;
-}
-
-.status-in-progress {
-    color: #ffd93d !important;
-}
-
-.status-completed {
-    color: #4aff4a !important;
-}
-
-.status-wait {
-    color: #b0b0b0 !important;
+#taskTable td:last-child .action-btn:not(:first-child) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
 }
 
 /* Action Buttons */
 .action-btn {
     padding: 4px 8px;
     margin: 0 2px;
-    background-color: transparent;
-    color: #4a9eff !important;
+    background-color: #111111;
+    color: #ffffff !important;
     font-size: 14px;
+    border: none;
+}
+
+/*maybe fix colors*/
+
+.action-btn i {
+    color: inherit;
 }
 
 .action-btn:hover {
-    background-color: #1a1a1a;
+    background-color: #6e6e6e;
+}
+
+.action-btn.has-notes {
+    color: #ffd93d !important;
+}
+
+.action-btn.has-notes:hover {
+    background-color: #6e6e6e;
+    color: #ffd93d !important;
 }
 
 .delete-btn {
+    color: #ff6b6b !important;
+}
+
+.delete-btn:hover {
+    background-color: #6e6e6e;
     color: #ff6b6b !important;
 }
 
@@ -189,11 +209,49 @@ header h1 {
 
 #subtaskTable {
     margin-top: 15px;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#subtaskTable th,
+#subtaskTable td {
+    padding: 8px;
+    vertical-align: middle;
+}
+
+#subtaskTable th:first-child,
+#subtaskTable td:first-child {
+    width: 40px;
+    text-align: center;
+}
+
+#subtaskTable th:nth-child(2),
+#subtaskTable td:nth-child(2) {
+    width: 40%;
+}
+
+#subtaskTable th:nth-child(3),
+#subtaskTable td:nth-child(3),
+#subtaskTable th:nth-child(4),
+#subtaskTable td:nth-child(4) {
+    width: 20%;
+}
+
+#subtaskTable th:last-child,
+#subtaskTable td:last-child {
+    width: 80px;
+    text-align: center;
+}
+
+#subtaskTable select,
+#subtaskTable input {
+    width: 100%;
+    min-width: 0;
 }
 
 /* Modal specific styles */
 .modal-content {
-    background-color: #1e1e1e !important;
+    background-color: #111111 !important;
     color: white !important;
 }
 
@@ -213,11 +271,11 @@ header h1 {
 
 .modal-content input:focus,
 .modal-content select:focus {
-    border-color: #4a9eff;
+    border-color: #ffffff;
 }
 
 .modal-content th {
-    color: #4a9eff !important;
+    color: #ffffff !important;
 }
 
 .close {
@@ -250,7 +308,7 @@ header h1 {
 .arrow-btn {
     padding: 0px 4px;
     background-color: transparent;
-    color: #4a9eff !important;
+    color: #ffffff !important;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -273,4 +331,112 @@ tr.dragging {
 
 #subtaskTable tbody tr td:first-child {
     cursor: move;
+}
+
+.notes-btn {
+    background-color: #111111;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.notes-btn:hover {
+    background-color: #606060;
+}
+
+#notesModal .modal-content {
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+}
+
+#notesModal .modal-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+#notesModal .modal-header h2 {
+    margin: 0;
+    color: #888;
+    font-size: 1.2em;
+}
+
+#notesModal .modal-body {
+    padding: 15px;
+}
+
+#notesModal textarea {
+    resize: vertical;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#notesModal .image-preview {
+    border: 1px solid #333;
+    padding: 5px;
+    margin: 5px;
+    position: relative;
+}
+
+#notesModal .image-preview img {
+    display: block;
+}
+
+#notesModal button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#notesModal button:hover {
+    background-color: #34495e;
+}
+
+#notesModal .close {
+    color: #888;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+#notesModal .close:hover {
+    color: white;
+}
+
+/* Time input specific styles */
+input[type="text"][id="alarmTime"],
+.task-input[placeholder="HH:mm"] {
+    font-family: monospace;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+input[type="time"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    color: #ffffff !important;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
+}
+
+input[type="time"]::-webkit-datetime-edit-ampm-field {
+    display: none;
+}
+
+input[type="time"][data-time-format="24"]::-webkit-datetime-edit-hour-field,
+input[type="time"][data-time-format="24"]::-webkit-datetime-edit-minute-field {
+    color: #ffffff;
 } 

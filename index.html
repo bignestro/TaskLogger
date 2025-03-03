@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Logger</title>
+    <title>TaskLog.v4</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="utilities.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Task Logger</h1>
+        <h1>TaskLog</h1>
     </header>
 
     <main>
@@ -34,7 +34,7 @@
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
             </select>
-            <input type="time" id="alarmTime" placeholder="Alarm (Optional)">
+            <input type="text" id="alarmTime" placeholder="HH:mm" class="task-input">
         </section>
 
         <!-- Text Input Row -->
@@ -64,6 +64,7 @@
                 <button onclick="document.getElementById('csvFileInput').click()">Import CSV</button>
                 <input type="file" id="csvFileInput" accept=".csv" style="display: none;" onchange="importTasksFromCSV(this)">
                 <button onclick="window.open(window.location.href, '_blank', 'menubar=no,toolbar=no,location=no,status=no')">Open in New Window</button>
+                <button onclick="clearAllTasks()" class="delete-btn">Clear All</button>
             </div>
         </section>
 

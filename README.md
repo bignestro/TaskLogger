@@ -1,6 +1,10 @@
 # Task Logger v4
 
-A modern, responsive web application for managing tasks and subtasks with advanced filtering, sorting, and data import/export capabilities.
+A task management web app with subtasks, filtering, and data import/export capabilities.
+
+## Setup
+1. Open `index.html` in your browser
+2. Start managing tasks
 
 ## Features
 
@@ -48,54 +52,17 @@ A modern, responsive web application for managing tasks and subtasks with advanc
 - Drag-and-drop subtask reordering
 - Multi-window support
 
-## Usage
+## Technical Notes
+- Works in any modern browser
+- Uses browser's localStorage for data
+- No installation or build process needed
+- Only external dependency: Font Awesome (for icons)
 
-1. Task Creation:
-   - Fill in task details in the input fields
-   - Required: Task name
-   - Optional: Info, Tool, CH, Type, Status, Priority, Alarm
-   - Click "Add Task" to create
-
-2. Subtask Management:
-   - Click "+Subtask" on any task to open modal
-   - Add subtasks with name, status, and priority
-   - Drag to reorder subtasks
-   - Empty subtasks are automatically removed on modal close
-
-3. Organization:
-   - Use filter buttons to show specific task types or status
-   - Click column headers to sort
-   - Use dedicated sort buttons for Priority and Creation time
-
-4. Data Import/Export:
-   - Click "Export CSV" to download task data
-   - Click "Import CSV" to load tasks from a file
-   - Imported tasks maintain all properties including subtasks
-
-5. Multi-Window:
-   - Click "Open in New Window" for multiple views
-   - All windows sync through localStorage
-
-## Technical Details
-
-### Files
-- `index.html`: Application structure and layout
-- `styles.css`: Custom styling and dark theme
-- `utilities.css`: Reset rules and utility classes
-- `script.js`: Application logic and functionality
-
-### Browser Support
-Supports all modern browsers:
-- Chrome
-- Firefox
-- Safari
-- Edge
-
-### Data Storage
-- Uses browser's localStorage
-- Automatic saving of all changes
-- CSV import/export for data backup and transfer
+## Files
+- `index.html`: Main app structure
+- `styles.css`: Styling
+- `utilities.css`: Helper styles
+- `script.js`: App logic
 
 ## License
-
-MIT License - Feel free to use, modify, and distribute as needed. 
+MIT License - Free to use and modify 
