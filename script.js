@@ -481,9 +481,17 @@ function sortByColumn(colIndex) {
     rows.sort((a, b) => {
         let aVal, bVal;
         
-        if (colIndex === 7) {
+        if (colIndex === 7) { // Created date column
             aVal = new Date(a.children[colIndex].querySelector('input').dataset.fullDate);
             bVal = new Date(b.children[colIndex].querySelector('input').dataset.fullDate);
+        } else if (colIndex === 5) { // Status column
+            const statusOrder = { 'Not Started': 0, 'In Progress': 1, 'Wait': 2, 'Completed': 3 };
+            aVal = statusOrder[a.children[colIndex].querySelector('select').value] || 0;
+            bVal = statusOrder[b.children[colIndex].querySelector('select').value] || 0;
+        } else if (colIndex === 6) { // Priority column
+            const priorityOrder = { 'High': 0, 'Medium': 1, 'Low': 2 };
+            aVal = priorityOrder[a.children[colIndex].querySelector('select').value] || 0;
+            bVal = priorityOrder[b.children[colIndex].querySelector('select').value] || 0;
         } else {
             aVal = a.children[colIndex].querySelector('input, select')?.value || a.children[colIndex].textContent;
             bVal = b.children[colIndex].querySelector('input, select')?.value || b.children[colIndex].textContent;
