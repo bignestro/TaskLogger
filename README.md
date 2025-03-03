@@ -1,4 +1,4 @@
-# Task Logger v4
+# Task Log v4
 
 A task management web app with subtasks, filtering, and data import/export capabilities.
 
